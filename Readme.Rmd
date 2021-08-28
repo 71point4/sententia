@@ -52,12 +52,13 @@ To access the API you'll need to first specify an API key as provided to you by 
 # Example API key (this key will not work).
 set_api_key("700ce27d55e27922a39232f8403602ba")
 get_api_key()
-
 ```
 
 ```{r include=FALSE}
 set_api_key(Sys.getenv("SENTENTIA_KEY"))
 ```
+
+If you wish not to set the key every time, use `usethis::edit_r_environ()` to set the key to `SENTENTIA_KEY`.
 
 To obtain a key, please get in touch. Contact details are in `DESCRIPTION`.
 
