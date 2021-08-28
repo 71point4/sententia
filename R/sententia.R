@@ -12,9 +12,11 @@ cache <- new.env()
 
 #' @import jsonlite
 #' @import tibble
+#' @importFrom dplyr arrange
 #' @importFrom magrittr %>%
 #' @importFrom utils URLencode
 #' @importFrom glue glue
+#' @importFrom glue glue_collapse
 #' @importFrom httr add_headers
 #' @importFrom httr http_error
 #' @importFrom httr http_type
@@ -73,7 +75,7 @@ base_url <- function() {
 set_api_key <- function(api_key) {
   if (nchar(api_key) == 32) {
     assign("api_key", api_key, envir = cache)
-  }else if {
+  } else {
     if (api_key == "" || is.na(api_key) || is.null(api_key)) {
       stop("API key is missing.", call. = FALSE)
     } else {
@@ -93,7 +95,11 @@ set_api_key <- function(api_key) {
 #' get_api_key()
 #' }
 get_api_key <- function() {
-  api_key <- try(get("api_key", envir = cache), silent = TRUE)
+  if(Sys.getenv("SENTENTIA_KEY") == ""){
+    api_key <- try(get("api_key", envir = cache), silent = TRUE)
+  } else {
+    api_key <- Sys.getenv("SENTENTIA_KEY")
+  }
   
   if (class(api_key) == "try-error" || api_key == "") {
     stop("Use set_api_key() to specify an API key.", call. = FALSE)

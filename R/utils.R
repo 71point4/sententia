@@ -56,7 +56,7 @@ GET <- function(url = NULL, config = list(), retry = 5, ...) {
   
   api_key <- NULL
   try(api_key <- get_api_key(), silent = TRUE)
-  #
+  
   if (!is.null(api_key)) {
     headers = list("token" = api_key)
   }
@@ -77,7 +77,7 @@ GET <- function(url = NULL, config = list(), retry = 5, ...) {
   # Check for "429 LIMIT EXCEEDED".
   #
   if (response$status_code %in% c(400, 429)) {
-    stop(response$msg, call. = FALSE)
+    stop(response$message, call. = FALSE)
   }
   
   response

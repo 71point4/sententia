@@ -1,4 +1,4 @@
-#' Pull a specific media sentiment index
+#' Get a count of the number of positive and negative articles.
 #'
 #' @param source The news source for which data is sought. Data can either be drawn from all sources (sourc=all), from News24 only (source=news24), or from Business Day only (source=businessday).. 
 #' @param model The name of the model to use. Even the general index (i.e. no topics) requires a model name.
@@ -11,9 +11,9 @@
 #' @export
 #'
 #' @examples
-#' # Get global sentiment index.
+#' # Get a count of the number of positive and negative articles for a specified model, topic, dictionary, aggregation method, and frequency.
 #' \dontrun{
-#' sent_index(
+#' sent_date_polarity(
 #'    source="all",
 #'    model="model_2021-05-15",
 #'    topic="global",
@@ -23,7 +23,7 @@
 #'    )
 #' }
 #' 
-sent_index <- function(source, model, topic, freq, dict, aggr){
+sent_date_polarity <- function(source, model, topic, freq, dict, aggr){
   check_args <- missing_args() %>% 
     glue_collapse(., sep = ",")
   
@@ -31,7 +31,7 @@ sent_index <- function(source, model, topic, freq, dict, aggr){
     stop(glue("Please specify missing argument: [{check_args}]"))
   }
   
-  url <- glue(base_url(), "index?source={source}&model={model}&topic={topic}&freq={freq}&dict={dict}&aggr={aggr}")
+  url <- glue(base_url(), "date_polarity?source={source}&model={model}&topic={topic}&freq={freq}&dict={dict}&aggr={aggr}")
   
   response <- GET(url)
   
