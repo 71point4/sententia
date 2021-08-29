@@ -1,0 +1,54 @@
+---
+title: "Plotting"
+output: rmarkdown::html_vignette
+vignette: >
+  %\VignetteIndexEntry{Plotting}
+  %\VignetteEncoding{UTF-8}
+  %\VignetteEngine{knitr::rmarkdown}
+editor_options: 
+  chunk_output_type: console
+---
+
+```{r, include = FALSE}
+knitr::opts_chunk$set(
+  collapse = TRUE,
+  comment = "#>"
+)
+```
+
+```{r setup}
+library(sententia)
+library(ggplot2)
+library(dplyr)
+library(tidyr)
+library(tidyquant)
+```
+
+Lets plot the latest sentiment index using `ggplot`
+
+```{r, eval = FALSE}
+msi_data <- sent_index(
+   source = "businessday",
+   model = "model_2021-05-15",
+   topic = "global",
+   freq = "month",
+   dict = "loughran",
+   aggr = "sent_logit"
+   )
+
+msi_data %>% 
+  filter(published_date > "2003-01-01") %>% 
+  mutate(published_date = as.Date(published_date)) %>% 
+  pivot_longer(names_to = "sentiment_type", values_to = "values", -c(source:aggr_type)) %>% 
+  ggplot(., aes(published_date, values, group = sentiment_type)) +
+  geom_line(color = "#18417B") +
+  geom_ma(color = "#BC4744", n = 3, linetype = "solid") +
+  labs(title = "Media Sentiment BER", 
+       y = "Index", 
+       x = "Date", 
+       caption = "(Business Day)") + 
+  scale_x_date() +
+  facet_wrap(~sentiment_type) +
+  theme_tq()
+```
+

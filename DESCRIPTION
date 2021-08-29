@@ -2,11 +2,16 @@ Package: sententia
 Title: Media Sentiment Data from the BER API
 Version: 0.1.0
 Authors@R: 
-    person(given = "Hanjo",
+    c(person(given = "Hanjo",
            family = "Odendaal",
            role = c("aut", "cre"),
-           email = "hanjo.oden@gmail.com",
-           comment = c(ORCID = "0000-0003-1172-0444"))
+           email = "hanjo@71point4.com",
+           comment = c(ORCID = "0000-0003-1172-0444")),
+    person(given = "Chris",
+           family = "Garbers",
+           role = c("aut"),
+           email = "garbers@71point4.com",
+           comment = c(ORCID = "0000-0003-1172-0444")))
 Description: sententia provides access to media sentiment data from the Bureau for Economic research.
 URL: https://github.com/71point4/sententia
 BugReports: https://github.com/71point4/sententia/issues
@@ -23,3 +28,7 @@ Imports:
     httr,
     magrittr,
     dplyr
+Suggests: 
+    rmarkdown,
+    knitr
+VignetteBuilder: knitr

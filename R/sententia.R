@@ -73,8 +73,14 @@ base_url <- function() {
 #' set_api_key("412dd2813fbf9037f5266557bbf5d1f5")
 #'
 set_api_key <- function(api_key) {
+
   if (nchar(api_key) == 32) {
-    assign("api_key", api_key, envir = cache)
+    if(Sys.getenv("SENTENTIA_KEY") != ""){
+      message("WARNING, an API key was found in .Renviron: SENTENTIA_KEY, it was replaced with key supplied.")  
+      assign("api_key", api_key, envir = cache)
+    } else {
+      assign("api_key", api_key, envir = cache)
+    }
   } else {
     if (api_key == "" || is.na(api_key) || is.null(api_key)) {
       stop("API key is missing.", call. = FALSE)
@@ -97,8 +103,13 @@ set_api_key <- function(api_key) {
 get_api_key <- function() {
   if(Sys.getenv("SENTENTIA_KEY") == ""){
     api_key <- try(get("api_key", envir = cache), silent = TRUE)
-  } else {
-    api_key <- Sys.getenv("SENTENTIA_KEY")
+  }
+  
+  if(Sys.getenv("SENTENTIA_KEY") != ""){
+    api_key <- try(get("api_key", envir = cache), silent = TRUE)
+    if (class(api_key) == "try-error" || api_key == ""){
+      api_key <- Sys.getenv("SENTENTIA_KEY")
+    } 
   }
   
   if (class(api_key) == "try-error" || api_key == "") {
