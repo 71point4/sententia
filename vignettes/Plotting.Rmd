@@ -28,12 +28,12 @@ Lets plot the latest sentiment index using `ggplot`
 
 ```{r, eval = FALSE}
 msi_data <- sent_index(
-   source = "all",
+   source = "businessday",
    model = "model_2021-05-15",
-   topic = "global",
+   topic = "economy",
    freq = "month",
-   dict = "loughran",
-   aggr = "sent_abspropdiff"
+   dict = "vader",
+   aggr = "sent_vader"
    )
 
 msi_data %>% 
@@ -41,8 +41,8 @@ msi_data %>%
   mutate(published_date = as.Date(published_date)) %>% 
   pivot_longer(names_to = "sentiment_type", values_to = "values", -c(source:aggr_type)) %>% 
   ggplot(., aes(published_date, values, group = sentiment_type)) +
-  geom_line(color = "#18417B") +
-  geom_ma(color = "#BC4744", n = 3, linetype = "solid") +
+  geom_line(color = "#BC4744") +
+  geom_ma(color = "#18417B", n = 3, linetype = "solid") +
   labs(title = "Media Sentiment BER", 
        y = "Index", 
        x = "Date", 

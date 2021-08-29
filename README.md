@@ -63,8 +63,12 @@ To obtain a key, please get in touch. Contact details are in
 
 # The API interface
 
-The API interface provides access to the various permutations that comes
-with calculating a sentiment score:
+Besides providing sentiment calculations from different word-list
+dictionaries, the API interface provides access to the various
+permutations that is available in calculating a sentiment score (Within
+text and across time):
+
+<img src="man/figures/aggregations.png" width="1236" style="display: block; margin: auto;" />
 
 -   Sentiment calculation `WITHIN` the article
     -   In the API this is set by the `aggr` parameter
@@ -74,8 +78,6 @@ with calculating a sentiment score:
         -   `relative`
         -   `absolute`
         -   `sent_log`
-
-<img src="man/figures/aggregations.png" width="1236" style="display: block; margin: auto;" />
 
 ## Sentiment Index
 

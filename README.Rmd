@@ -76,7 +76,11 @@ To obtain a key, please get in touch. Contact details are in `DESCRIPTION`.
 
 # The API interface
 
-The API interface provides access to the various permutations that comes with calculating a sentiment score: 
+Besides providing sentiment calculations from different word-list dictionaries, the API interface provides access to the various permutations that is available in calculating a sentiment score (Within text and across time): 
+
+```{r, eval = TRUE, echo = FALSE, fig.align='center'}
+knitr::include_graphics("man/figures/aggregations.png")
+```
 
 * Sentiment calculation `WITHIN` the article
    - In the API this is set by the `aggr` parameter
@@ -86,10 +90,6 @@ The API interface provides access to the various permutations that comes with ca
       - `relative` 
       - `absolute` 
       - `sent_log`
-
-```{r, eval = TRUE, echo = FALSE, fig.align='center'}
-knitr::include_graphics("man/figures/aggregations.png")
-```
 
 ## Sentiment Index
 
