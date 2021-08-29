@@ -45,15 +45,37 @@ you by the BER.
 
 ``` r
 # Example API key (this key will not work).
-set_api_key("7b58ffa5afcf893d678433a56e0edca4")
+set_api_key("7b58ffa5afcf893d678433a56e0edca5")
 get_api_key()
 ```
 
 If you wish not to set the key every time, use
 `usethis::edit_r_environ()` to set the key to `SENTENTIA_KEY`.
 
+Please be aware, that there is an order where the API looks for keys:
+
+1.  Look for `ENV` variable, `SENTENTIA_KEY`, if not found, look in
+    `cache` where key was stored using `set_api_key()`
+2.  `set_api_key()` OVERRIDES `SENTENTIA_KEY` in `.Renviron`!
+
 To obtain a key, please get in touch. Contact details are in
 `DESCRIPTION`.
+
+# The API interface
+
+The API interface provides access to the various permutations that comes
+with calculating a sentiment score:
+
+-   Sentiment calculation `WITHIN` the article
+    -   In the API this is set by the `aggr` parameter
+-   Sentiment calculation `ACCROSS` a time period
+    -   This does not need to be set. API returns four aggregations:
+        -   `mean_sentiment`
+        -   `relative`
+        -   `absolute`
+        -   `sent_log`
+
+<img src="man/figures/aggregations.png" width="1236" style="display: block; margin: auto;" />
 
 ## Sentiment Index
 
@@ -62,7 +84,7 @@ topic, dictionary, frequency, and aggregation method combination.
 
 ``` r
 sent_index(
-   source = "all",
+   source = "businessday",
    model = "model_2021-05-15",
    topic = "global",
    freq = "month",

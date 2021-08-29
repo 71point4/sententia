@@ -16,7 +16,7 @@ knitr::opts_chunk$set(
 )
 ```
 
-```{r setup}
+```{r setup, eval=FALSE}
 library(sententia)
 library(ggplot2)
 library(dplyr)
@@ -28,12 +28,12 @@ Lets plot the latest sentiment index using `ggplot`
 
 ```{r, eval = FALSE}
 msi_data <- sent_index(
-   source = "businessday",
+   source = "all",
    model = "model_2021-05-15",
    topic = "global",
    freq = "month",
    dict = "loughran",
-   aggr = "sent_logit"
+   aggr = "sent_abspropdiff"
    )
 
 msi_data %>% 
@@ -48,7 +48,7 @@ msi_data %>%
        x = "Date", 
        caption = "(Business Day)") + 
   scale_x_date() +
-  facet_wrap(~sentiment_type) +
+  facet_wrap(~sentiment_type, scales = "free_y") +
   theme_tq()
 ```
 

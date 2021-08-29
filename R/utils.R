@@ -77,7 +77,12 @@ GET <- function(url = NULL, config = list(), retry = 5, ...) {
   # Check for "429 LIMIT EXCEEDED".
   #
   if (response$status_code %in% c(400, 429)) {
-    stop(response$message, call. = FALSE)
+      out <- response %>% 
+        content(as = "text", encoding = "UTF-8") %>%
+        fromJSON() %>%
+        toJSON(pretty = TRUE)
+      
+      stop(out, call. = FALSE)
   }
   
   response

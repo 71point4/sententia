@@ -74,13 +74,30 @@ Please be aware, that there is an order where the API looks for keys:
 
 To obtain a key, please get in touch. Contact details are in `DESCRIPTION`.
 
+# The API interface
+
+The API interface provides access to the various permutations that comes with calculating a sentiment score: 
+
+* Sentiment calculation `WITHIN` the article
+   - In the API this is set by the `aggr` parameter
+* Sentiment calculation `ACCROSS` a time period
+   - This does not need to be set. API returns four aggregations:
+      - `mean_sentiment` 
+      - `relative` 
+      - `absolute` 
+      - `sent_log`
+
+```{r, eval = TRUE, echo = FALSE, fig.align='center'}
+knitr::include_graphics("man/figures/aggregations.png")
+```
+
 ## Sentiment Index
 
 Get media sentiment index values for specified media source, model, topic, dictionary, frequency, and aggregation method combination.
 
 ```{r}
 sent_index(
-   source = "all",
+   source = "businessday",
    model = "model_2021-05-15",
    topic = "global",
    freq = "month",
