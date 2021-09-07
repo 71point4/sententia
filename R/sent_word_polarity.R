@@ -23,12 +23,6 @@
 #' }
 #' 
 sent_word_polarity <- function(source, model, topic, freq, dict){
-  check_args <- missing_args() %>% 
-    glue_collapse(., sep = ",")
-  
-  if(length(check_args)){
-    stop(glue("Please specify missing argument: [{check_args}]"))
-  }
   
   url <- glue(base_url(), "word_polarity?source={source}&model={model}&topic={topic}&freq={freq}&dict={dict}")
   

@@ -24,13 +24,7 @@
 #' }
 #' 
 sent_index <- function(source, model, topic, freq, dict, aggr){
-  check_args <- missing_args() %>% 
-    glue_collapse(., sep = ",")
-  
-  if(length(check_args)){
-    stop(glue("Please specify missing argument: [{check_args}]"))
-  }
-  
+
   url <- glue(base_url(), "index?source={source}&model={model}&topic={topic}&freq={freq}&dict={dict}&aggr={aggr}")
   
   response <- GET(url)

@@ -20,12 +20,6 @@
 #' }
 #' 
 sent_counts <- function(source, model, topic, freq){
-  check_args <- missing_args() %>% 
-    glue_collapse(., sep = ",")
-  
-  if(length(check_args)){
-    stop(glue("Please specify missing argument: [{check_args}]"))
-  }
   
   url <- glue(base_url(), "counts?source={source}&model={model}&topic={topic}&freq={freq}")
   
