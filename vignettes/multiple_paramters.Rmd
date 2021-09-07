@@ -1,0 +1,68 @@
+---
+title: "multiple_paramters"
+output: rmarkdown::html_vignette
+vignette: >
+  %\VignetteIndexEntry{multiple_paramters}
+  %\VignetteEncoding{UTF-8}
+  %\VignetteEngine{knitr::rmarkdown}
+editor_options: 
+  chunk_output_type: console
+---
+
+```{r, include = FALSE}
+knitr::opts_chunk$set(
+  collapse = TRUE,
+  comment = "#>"
+)
+```
+
+```{r setup, message=FALSE}
+library(sententia)
+library(dplyr)
+library(tidyr)
+library(ggplot2)
+library(purrr)
+library(tidyquant)
+```
+
+```{r}
+f <- function(source_in, topic_in){
+  
+  msi_data <- sent_index(
+    source = source_in,
+    model = "model_2021-05-15",
+    topic = topic_in,
+    freq = "month",
+    dict = "loughran",
+    aggr = "sent_logit"
+  )
+  
+  msi_data %>% 
+    filter(published_date > "2019-06-01") %>% 
+    rename(`Logit Aggregation` = sent_log) %>% 
+    mutate(published_date = as.Date(published_date)) %>% 
+    pivot_longer(names_to = "sentiment_type", values_to = "values", -c(source:aggr_type)) %>% 
+    filter(sentiment_type == "Logit Aggregation")
+}
+
+setup <- crossing(source_in = c("all", "news24", "businessday"), 
+                     topic_in = c("global", "economy"))
+
+out <- purrr::pmap_dfr(setup, f) 
+```
+
+```{r, fig.width=12}
+out %>% 
+  ggplot(., aes(published_date, values, group = sentiment_type), color = 1) +
+  geom_line(color = "#BC4744") +
+  geom_ma(color = "#18417B", n = 3, linetype = "solid", ma_fun = EMA) +
+  labs(title = "Media Sentiment BER: Economic Focus", 
+       subtitle = "Loughran (sent logit)",
+       y = "Index", 
+       x = "Date", 
+       caption = "3 month EMA (Blue); Monthly Index (Red)") + 
+  scale_x_date() +
+  facet_wrap(topic ~ source, scales = "free_y") +
+  theme_tq()
+```
+

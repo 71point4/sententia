@@ -8,8 +8,11 @@ experimental](https://img.shields.io/badge/lifecycle-experimental-orange.svg)](h
 [Sententia](https://github.com/71point4/sententia) provides access to
 media sentiment data from the Bureau for Economic research.
 
-The homepage for the {sententia} R package is at
+This is the homepage for the {sententia} R package is at
 <https://github.com/71point4/sententia>.
+
+The homepage for the {sententia} `python` package is at
+<https://github.com/71point4/pysententia>.
 
 ## Installation
 
@@ -89,7 +92,7 @@ sent_index(
    source = "businessday",
    model = "model_2021-05-15",
    topic = "global",
-   freq = "month",
+   freq = "day",
    dict = "loughran",
    aggr = "sent_logit"
    )
@@ -182,7 +185,7 @@ sent_word_polarity(
    source = "all",
    model = "model_2021-05-15",
    topic = "economy",
-   freq = "month",
+   freq = "day",
    dict = "loughran"
    )
 

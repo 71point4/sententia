@@ -16,7 +16,7 @@ knitr::opts_chunk$set(
 )
 ```
 
-```{r setup, eval=FALSE}
+```{r setup, message=FALSE}
 library(sententia)
 library(ggplot2)
 library(dplyr)
@@ -28,7 +28,7 @@ Lets plot the latest sentiment index using `sent_index()` function.
 
 In this example we will be calling the `economic` focus index that is constructed using news data from Business Day. To characterize the sentiment, we use the `Loughran` dictionary and calculate the sentiment *within* each article using the `logit` formulation.
 
-```{r, eval = FALSE}
+```{r}
 msi_data <- sent_index(
    source = "businessday",
    model = "model_2021-05-15",
@@ -41,7 +41,7 @@ msi_data <- sent_index(
 
 Once we have retrieved it is fairly easy to plot the index and the different `time` aggregations using `ggplot2`.
 
-```{r, eval = FALSE}
+```{r, fig.width=12}
 msi_data %>% 
   filter(published_date > "2003-01-01") %>% 
   mutate(published_date = as.Date(published_date)) %>% 
