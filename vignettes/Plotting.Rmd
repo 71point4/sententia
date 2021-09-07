@@ -24,7 +24,9 @@ library(tidyr)
 library(tidyquant)
 ```
 
-Lets plot the latest sentiment index using `ggplot`
+Lets plot the latest sentiment index using `sent_index()` function. 
+
+In this example we will be calling the `economic` focus index that is constructed using news data from Business Day. To characterize the sentiment, we use the `Loughran` dictionary and calculate the sentiment *within* each article using the `logit` formulation.
 
 ```{r, eval = FALSE}
 msi_data <- sent_index(
@@ -32,18 +34,23 @@ msi_data <- sent_index(
    model = "model_2021-05-15",
    topic = "economy",
    freq = "month",
-   dict = "vader",
-   aggr = "sent_vader"
+   dict = "loughran",
+   aggr = "sent_logit"
    )
+```
 
+Once we have retrieved it is fairly easy to plot the index and the different `time` aggregations using `ggplot2`.
+
+```{r, eval = FALSE}
 msi_data %>% 
   filter(published_date > "2003-01-01") %>% 
   mutate(published_date = as.Date(published_date)) %>% 
   pivot_longer(names_to = "sentiment_type", values_to = "values", -c(source:aggr_type)) %>% 
-  ggplot(., aes(published_date, values, group = sentiment_type)) +
+  ggplot(., aes(published_date, values, group = sentiment_type), color = 1) +
   geom_line(color = "#BC4744") +
-  geom_ma(color = "#18417B", n = 3, linetype = "solid") +
-  labs(title = "Media Sentiment BER", 
+  geom_ma(color = "#18417B", n = 3, linetype = "solid", ma_fun = EMA) +
+  labs(title = "Media Sentiment BER: Economic Focus", 
+       subtitle = "Loughran (sent logit)",
        y = "Index", 
        x = "Date", 
        caption = "(Business Day)") + 

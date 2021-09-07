@@ -5,7 +5,7 @@
 #' @param topic The topic which you are interested in.
 #' @param freq 	The frequency on which to aggregate the index. Available values: day, week, month.
 #' @param dict The dictionary to use in sentiment characterization for the index. Available values: afinn, anew, geninqposneg, huliu, loughran, lsd2015, nrc, vader.
-#' @param aggr The aggregation method to use. Available values: sent_abspropdiff, sent_relpropdiff, sent_logit, sent_vader, sent_valence.
+#' @param aggr The within article aggregation method to use. Available values: sent_abspropdiff, sent_relpropdiff, sent_logit, sent_vader, sent_valence.
 #'
 #' @return tibble.
 #' @export

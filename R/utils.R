@@ -36,6 +36,7 @@ missing_args <- function()
 {
   calling_function <- sys.function(1)
   all_args <- names(formals(calling_function))
+  all_args <- all_args[all_args != "..."]
   matched_call <- match.call(
     calling_function, 
     sys.call(1), 
