@@ -1,5 +1,5 @@
 ---
-title: "multiple_paramters"
+title: "Multiple Parameters"
 output: rmarkdown::html_vignette
 vignette: >
   %\VignetteIndexEntry{multiple_paramters}
@@ -12,9 +12,12 @@ editor_options:
 ```{r, include = FALSE}
 knitr::opts_chunk$set(
   collapse = TRUE,
+  eval = FALSE,
   comment = "#>"
 )
 ```
+
+# Load Libraries
 
 ```{r setup, message=FALSE}
 library(sententia)
@@ -25,12 +28,15 @@ library(purrr)
 library(tidyquant)
 ```
 
+# Map over parameters
+
+I now create a very simple function `f` with two parameters: (1) media source and (2) news topic. 
+
 ```{r}
 f <- function(source_in, topic_in){
   
   msi_data <- sent_index(
     source = source_in,
-    model = "model_2021-05-15",
     topic = topic_in,
     freq = "month",
     dict = "loughran",
@@ -38,18 +44,24 @@ f <- function(source_in, topic_in){
   )
   
   msi_data %>% 
-    filter(published_date > "2019-06-01") %>% 
+    # filter(published_date > "2019-06-01") %>% 
     rename(`Logit Aggregation` = sent_log) %>% 
     mutate(published_date = as.Date(published_date)) %>% 
     pivot_longer(names_to = "sentiment_type", values_to = "values", -c(source:aggr_type)) %>% 
     filter(sentiment_type == "Logit Aggregation")
 }
+```
 
+Using this function, I specify the parameter combination over which I want to `map`. 
+
+```{r}
 setup <- crossing(source_in = c("all", "news24", "businessday"), 
-                     topic_in = c("global", "economy"))
+                     topic_in = c("global", "economy", "industry", "markets", "politics"))
 
 out <- purrr::pmap_dfr(setup, f) 
 ```
+
+If you want to plot the output, a simple `facet_wrap` helps to plot the combinations in one graph.
 
 ```{r, fig.width=12}
 out %>% 
@@ -62,7 +74,7 @@ out %>%
        x = "Date", 
        caption = "3 month EMA (Blue); Monthly Index (Red)") + 
   scale_x_date() +
-  facet_wrap(topic ~ source, scales = "free_y") +
+  facet_wrap(topic ~ source, scales = "free_y", nrow = 4) +
   theme_tq()
 ```
 
