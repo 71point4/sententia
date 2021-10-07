@@ -22,9 +22,9 @@
 #'    )
 #' }
 #' 
-sent_word_polarity <- function(source, model, topic, freq, dict){
+sent_word_polarity <- function(source, topic, freq, dict){
   
-  url <- glue(base_url(), "word_polarity?source={source}&model={model}&topic={topic}&freq={freq}&dict={dict}")
+  url <- glue(base_url(), "word_polarity?source={source}&topic={topic}&freq={freq}&dict={dict}")
   
   response <- GET(url)
   

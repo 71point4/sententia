@@ -23,9 +23,9 @@
 #'    )
 #' }
 #' 
-sent_date_polarity <- function(source, model, topic, freq, dict, aggr){
+sent_date_polarity <- function(source, topic, freq, dict, aggr){
 
-  url <- glue(base_url(), "date_polarity?source={source}&model={model}&topic={topic}&freq={freq}&dict={dict}&aggr={aggr}")
+  url <- glue(base_url(), "date_polarity?source={source}&topic={topic}&freq={freq}&dict={dict}&aggr={aggr}")
   
   response <- GET(url)
   

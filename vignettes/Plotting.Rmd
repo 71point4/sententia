@@ -30,13 +30,13 @@ In this example we will be calling the `economic` focus index that is constructe
 
 ```{r}
 msi_data <- sent_index(
-   source = "businessday",
-   model = "model_2021-05-15",
-   topic = "economy",
+   source = "all",
+   topic = "global",
    freq = "month",
    dict = "loughran",
    aggr = "sent_logit"
    )
+
 ```
 
 Once we have retrieved it is fairly easy to plot the index and the different `time` aggregations using `ggplot2`.

@@ -4,12 +4,10 @@
 \alias{sent_index}
 \title{Pull a specific media sentiment index}
 \usage{
-sent_index(source, model, topic, freq, dict, aggr)
+sent_index(source, topic, freq, dict, aggr)
 }
 \arguments{
 \item{source}{The news source for which data is sought. Data can either be drawn from all sources (sourc=all), from News24 only (source=news24), or from Business Day only (source=businessday)..}
-
-\item{model}{The name of the model to use. Even the general index (i.e. no topics) requires a model name.}
 
 \item{topic}{The topic which you are interested in.}
 
@@ -17,7 +15,9 @@ sent_index(source, model, topic, freq, dict, aggr)
 
 \item{dict}{The dictionary to use in sentiment characterization for the index. Available values: afinn, anew, geninqposneg, huliu, loughran, lsd2015, nrc, vader.}
 
-\item{aggr}{The aggregation method to use. Available values: sent_abspropdiff, sent_relpropdiff, sent_logit, sent_vader, sent_valence.}
+\item{aggr}{The within article aggregation method to use. Available values: sent_abspropdiff, sent_relpropdiff, sent_logit, sent_vader, sent_valence.}
+
+\item{model}{The name of the model to use. Even the general index (i.e. no topics) requires a model name.}
 }
 \value{
 tibble.

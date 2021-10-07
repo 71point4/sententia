@@ -23,9 +23,9 @@
 #'    )
 #' }
 #' 
-sent_index <- function(source, model, topic, freq, dict, aggr){
+sent_index <- function(source, topic, freq, dict, aggr){
 
-  url <- glue(base_url(), "index?source={source}&model={model}&topic={topic}&freq={freq}&dict={dict}&aggr={aggr}")
+  url <- glue(base_url(), "index?source={source}&topic={topic}&freq={freq}&dict={dict}&aggr={aggr}")
   
   response <- GET(url)
   

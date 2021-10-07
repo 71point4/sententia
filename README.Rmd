@@ -99,10 +99,9 @@ Get media sentiment index values for specified media source, model, topic, dicti
 
 ```{r}
 sent_index(
-   source = "businessday",
-   model = "model_2021-05-15",
+   source = "all",
    topic = "global",
-   freq = "day",
+   freq = "month",
    dict = "loughran",
    aggr = "sent_logit"
    )
@@ -158,7 +157,6 @@ Get a count of the number of positive and negative articles for a specified mode
 ```{r}
 sent_date_polarity(
    source = "all",
-   model = "model_2021-05-15",
    topic = "global",
    freq = "week",
    dict = "loughran",
@@ -188,7 +186,6 @@ Get the top 50 most frequently occurring positive and negative words for a speci
 ```{r}
 sent_word_polarity(
    source = "all",
-   model = "model_2021-05-15",
    topic = "economy",
    freq = "day",
    dict = "loughran"

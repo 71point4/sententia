@@ -4,18 +4,18 @@
 \alias{sent_word_polarity}
 \title{Get the top 50 most frequently occurring positive and negative words.}
 \usage{
-sent_word_polarity(source, model, topic, freq, dict)
+sent_word_polarity(source, topic, freq, dict)
 }
 \arguments{
 \item{source}{The news source for which data is sought. Data can either be drawn from all sources (sourc=all), from News24 only (source=news24), or from Business Day only (source=businessday)..}
-
-\item{model}{The name of the model to use. Even the general index (i.e. no topics) requires a model name.}
 
 \item{topic}{The topic which you are interested in.}
 
 \item{freq}{The frequency on which to aggregate the index. Available values: day, week, month.}
 
 \item{dict}{The dictionary to use in sentiment characterization for the index. Available values: afinn, anew, geninqposneg, huliu, loughran, lsd2015, nrc, vader.}
+
+\item{model}{The name of the model to use. Even the general index (i.e. no topics) requires a model name.}
 }
 \value{
 tibble.
