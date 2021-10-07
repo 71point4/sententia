@@ -129,7 +129,6 @@ Get a count of the number of articles for a specified media source, model, topic
 ```{r}
 sent_counts(
    source = "all",
-   model = "model_2021-05-15",
    topic = "global",
    freq = "week"
    )

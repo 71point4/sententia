@@ -19,9 +19,9 @@
 #'    )
 #' }
 #' 
-sent_counts <- function(source, model, topic, freq){
+sent_counts <- function(source, topic, freq){
   
-  url <- glue(base_url(), "counts?source={source}&model={model}&topic={topic}&freq={freq}")
+  url <- glue(base_url(), "counts?source={source}&topic={topic}&freq={freq}")
   
   response <- GET(url)
   
