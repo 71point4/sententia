@@ -89,10 +89,9 @@ topic, dictionary, frequency, and aggregation method combination.
 
 ``` r
 sent_index(
-   source = "businessday",
-   model = "model_2021-05-15",
+   source = "all",
    topic = "global",
-   freq = "day",
+   freq = "month",
    dict = "loughran",
    aggr = "sent_logit"
    )
@@ -121,7 +120,6 @@ model, topic, and frequency of aggregation.
 ``` r
 sent_counts(
    source = "all",
-   model = "model_2021-05-15",
    topic = "global",
    freq = "week"
    )
@@ -150,7 +148,6 @@ specified model, topic, dictionary, aggregation method, and frequency.
 ``` r
 sent_date_polarity(
    source = "all",
-   model = "model_2021-05-15",
    topic = "global",
    freq = "week",
    dict = "loughran",
@@ -183,7 +180,6 @@ specified frequency (day = 30 days, week = 3 months, month = 6 months).
 ``` r
 sent_word_polarity(
    source = "all",
-   model = "model_2021-05-15",
    topic = "economy",
    freq = "day",
    dict = "loughran"

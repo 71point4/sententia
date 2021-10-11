@@ -26,8 +26,6 @@
 <![endif]-->
 </head>
 <body data-spy="scroll" data-target="#toc">
-    
-
     <div class="container template-home">
       <header><div class="navbar navbar-default navbar-fixed-top" role="navigation">
   <div class="container">
@@ -46,6 +44,12 @@
 
     <div id="navbar" class="navbar-collapse collapse">
       <ul class="nav navbar-nav">
+<li>
+  <a href="index.html">
+    <span class="fas fa-home fa-lg"></span>
+     
+  </a>
+</li>
 <li>
   <a href="reference/index.html">Reference</a>
 </li>
@@ -90,41 +94,41 @@
 
 <div id="sententia-" class="section level1">
 <div class="page-header"><h1 class="hasAnchor">
-<a href="#sententia-" class="anchor" aria-hidden="true"></a>sententia <img src="reference/figures/logo.png" align="right" alt="" width="120">
+<a href="#sententia-" class="anchor"></a>sententia <img src="reference/figures/logo.png" align="right" alt="" width="120">
 </h1></div>
 
-<p><a href="https://github.com/71point4/sententia" class="external-link">Sententia</a> provides access to media sentiment data from the Bureau for Economic research.</p>
-<p>This is the homepage for the {sententia} R package is at <a href="https://github.com/71point4/sententia" class="external-link uri">https://github.com/71point4/sententia</a>.</p>
-<p>The homepage for the {sententia} <code>python</code> package is at <a href="https://github.com/71point4/pysententia" class="external-link uri">https://github.com/71point4/pysententia</a>.</p>
+<p><a href="https://github.com/71point4/sententia">Sententia</a> provides access to media sentiment data from the Bureau for Economic research.</p>
+<p>This is the homepage for the {sententia} R package is at <a href="https://github.com/71point4/sententia" class="uri">https://github.com/71point4/sententia</a>.</p>
+<p>The homepage for the {sententia} <code>python</code> package is at <a href="https://github.com/71point4/pysententia" class="uri">https://github.com/71point4/pysententia</a>.</p>
 <div id="installation" class="section level2">
 <h2 class="hasAnchor">
-<a href="#installation" class="anchor" aria-hidden="true"></a>Installation</h2>
+<a href="#installation" class="anchor"></a>Installation</h2>
 <p>Install from GitHub.</p>
 <div class="sourceCode" id="cb1"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span class="fu">remotes</span><span class="fu">::</span><span class="fu"><a href="https://remotes.r-lib.org/reference/install_github.html" class="external-link">install_github</a></span><span class="op">(</span><span class="st">"71point4/sententia"</span><span class="op">)</span></code></pre></div>
+<code class="sourceCode R"><span class="fu">remotes</span><span class="fu">::</span><span class="fu"><a href="https://remotes.r-lib.org/reference/install_github.html">install_github</a></span><span class="op">(</span><span class="st">"71point4/sententia"</span><span class="op">)</span></code></pre></div>
 <p>If you want availability to the latest features (at your own risk) then you can also install from the development branch.</p>
 <div class="sourceCode" id="cb2"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span class="fu">remotes</span><span class="fu">::</span><span class="fu"><a href="https://remotes.r-lib.org/reference/install_github.html" class="external-link">install_github</a></span><span class="op">(</span><span class="st">"71point4/sententia"</span>, ref <span class="op">=</span> <span class="st">"dev"</span><span class="op">)</span></code></pre></div>
+<code class="sourceCode R"><span class="fu">remotes</span><span class="fu">::</span><span class="fu"><a href="https://remotes.r-lib.org/reference/install_github.html">install_github</a></span><span class="op">(</span><span class="st">"71point4/sententia"</span>, ref <span class="op">=</span> <span class="st">"dev"</span><span class="op">)</span></code></pre></div>
 </div>
 <div id="usage" class="section level2">
 <h2 class="hasAnchor">
-<a href="#usage" class="anchor" aria-hidden="true"></a>Usage</h2>
+<a href="#usage" class="anchor"></a>Usage</h2>
 <div class="sourceCode" id="cb3"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span class="kw"><a href="https://rdrr.io/r/base/library.html" class="external-link">library</a></span><span class="op">(</span><span class="va"><a href="https://github.com/71point4/sententia" class="external-link">sententia</a></span><span class="op">)</span></code></pre></div>
+<code class="sourceCode R"><span class="kw"><a href="https://rdrr.io/r/base/library.html">library</a></span><span class="op">(</span><span class="va"><a href="https://github.com/71point4/sententia">sententia</a></span><span class="op">)</span></code></pre></div>
 <p>Check version.</p>
 <div class="sourceCode" id="cb4"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span class="fu"><a href="https://rdrr.io/r/utils/packageDescription.html" class="external-link">packageVersion</a></span><span class="op">(</span><span class="st">"sententia"</span><span class="op">)</span></code></pre></div>
+<code class="sourceCode R"><span class="fu"><a href="https://rdrr.io/r/utils/packageDescription.html">packageVersion</a></span><span class="op">(</span><span class="st">"sententia"</span><span class="op">)</span></code></pre></div>
 <div id="set-api-key" class="section level3">
 <h3 class="hasAnchor">
-<a href="#set-api-key" class="anchor" aria-hidden="true"></a>Set API Key</h3>
+<a href="#set-api-key" class="anchor"></a>Set API Key</h3>
 <p>To access the API you’ll need to first specify an API key as provided to you by the BER.</p>
 <div class="sourceCode" id="cb5"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span class="co"># Example API key (this key will not work).</span>
 <span class="fu"><a href="reference/set_api_key.html">set_api_key</a></span><span class="op">(</span><span class="st">"7b58ffa5afcf893d678433a56e0edca5"</span><span class="op">)</span>
 <span class="fu"><a href="reference/get_api_key.html">get_api_key</a></span><span class="op">(</span><span class="op">)</span></code></pre></div>
-<p>If you wish not to set the key every time, use <code><a href="https://usethis.r-lib.org/reference/edit.html" class="external-link">usethis::edit_r_environ()</a></code> to set the key to <code>SENTENTIA_KEY</code>.</p>
+<p>If you wish not to set the key every time, use <code><a href="https://usethis.r-lib.org/reference/edit.html">usethis::edit_r_environ()</a></code> to set the key to <code>SENTENTIA_KEY</code>.</p>
 <p>Please be aware, that there is an order where the API looks for keys:</p>
-<ol style="list-style-type: decimal">
+<ol>
 <li>Look for <code>ENV</code> variable, <code>SENTENTIA_KEY</code>, if not found, look in <code>cache</code> where key was stored using <code><a href="reference/set_api_key.html">set_api_key()</a></code>
 </li>
 <li>
@@ -136,7 +140,7 @@
 </div>
 <div id="the-api-interface" class="section level1">
 <h1 class="hasAnchor">
-<a href="#the-api-interface" class="anchor" aria-hidden="true"></a>The API interface</h1>
+<a href="#the-api-interface" class="anchor"></a>The API interface</h1>
 <p>Besides providing sentiment calculations from different word-list dictionaries, the API interface provides access to the various permutations that is available in calculating a sentiment score (Within text and across time):</p>
 <p><img src="reference/figures/aggregations.png" width="1236" style="display: block; margin: auto;"></p>
 <ul>
@@ -160,14 +164,13 @@
 </ul>
 <div id="sentiment-index" class="section level2">
 <h2 class="hasAnchor">
-<a href="#sentiment-index" class="anchor" aria-hidden="true"></a>Sentiment Index</h2>
+<a href="#sentiment-index" class="anchor"></a>Sentiment Index</h2>
 <p>Get media sentiment index values for specified media source, model, topic, dictionary, frequency, and aggregation method combination.</p>
 <div class="sourceCode" id="cb6"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span class="fu"><a href="reference/sent_index.html">sent_index</a></span><span class="op">(</span>
-   source <span class="op">=</span> <span class="st">"businessday"</span>,
-   model <span class="op">=</span> <span class="st">"model_2021-05-15"</span>,
+   source <span class="op">=</span> <span class="st">"all"</span>,
    topic <span class="op">=</span> <span class="st">"global"</span>,
-   freq <span class="op">=</span> <span class="st">"day"</span>,
+   freq <span class="op">=</span> <span class="st">"month"</span>,
    dict <span class="op">=</span> <span class="st">"loughran"</span>,
    aggr <span class="op">=</span> <span class="st">"sent_logit"</span>
    <span class="op">)</span>
@@ -190,12 +193,11 @@
 </div>
 <div id="count-of-articles-that-make-up-sentiment" class="section level1">
 <h1 class="hasAnchor">
-<a href="#count-of-articles-that-make-up-sentiment" class="anchor" aria-hidden="true"></a>Count of articles that make up sentiment</h1>
+<a href="#count-of-articles-that-make-up-sentiment" class="anchor"></a>Count of articles that make up sentiment</h1>
 <p>Get a count of the number of articles for a specified media source, model, topic, and frequency of aggregation.</p>
 <div class="sourceCode" id="cb7"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span class="fu"><a href="reference/sent_counts.html">sent_counts</a></span><span class="op">(</span>
    source <span class="op">=</span> <span class="st">"all"</span>,
-   model <span class="op">=</span> <span class="st">"model_2021-05-15"</span>,
    topic <span class="op">=</span> <span class="st">"global"</span>,
    freq <span class="op">=</span> <span class="st">"week"</span>
    <span class="op">)</span>
@@ -217,12 +219,11 @@
 </div>
 <div id="date-polarity" class="section level1">
 <h1 class="hasAnchor">
-<a href="#date-polarity" class="anchor" aria-hidden="true"></a>Date polarity</h1>
+<a href="#date-polarity" class="anchor"></a>Date polarity</h1>
 <p>Get a count of the number of positive and negative articles for a specified model, topic, dictionary, aggregation method, and frequency.</p>
 <div class="sourceCode" id="cb8"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span class="fu"><a href="reference/sent_date_polarity.html">sent_date_polarity</a></span><span class="op">(</span>
    source <span class="op">=</span> <span class="st">"all"</span>,
-   model <span class="op">=</span> <span class="st">"model_2021-05-15"</span>,
    topic <span class="op">=</span> <span class="st">"global"</span>,
    freq <span class="op">=</span> <span class="st">"week"</span>,
    dict <span class="op">=</span> <span class="st">"loughran"</span>,
@@ -246,12 +247,11 @@
 </div>
 <div id="word-polarity" class="section level1">
 <h1 class="hasAnchor">
-<a href="#word-polarity" class="anchor" aria-hidden="true"></a>Word polarity</h1>
+<a href="#word-polarity" class="anchor"></a>Word polarity</h1>
 <p>Get the top 50 most frequently occurring positive and negative words for a specified model, topic, dictionary, aggregation method, and frequency. The timeframe over which these words are selected depends on the specified frequency (day = 30 days, week = 3 months, month = 6 months).</p>
 <div class="sourceCode" id="cb9"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span class="fu"><a href="reference/sent_word_polarity.html">sent_word_polarity</a></span><span class="op">(</span>
    source <span class="op">=</span> <span class="st">"all"</span>,
-   model <span class="op">=</span> <span class="st">"model_2021-05-15"</span>,
    topic <span class="op">=</span> <span class="st">"economy"</span>,
    freq <span class="op">=</span> <span class="st">"day"</span>,
    dict <span class="op">=</span> <span class="st">"loughran"</span>
@@ -277,7 +277,7 @@
 
   <div class="col-md-3 hidden-xs hidden-sm" id="pkgdown-sidebar">
     <div class="links">
-<h2 data-toc-skip>Links</h2>
+<h2>Links</h2>
 <ul class="list-unstyled">
 <li>Browse source code at <br><a href="https://github.com/71point4/sententia/">https://​github.com/​71point4/​sententia/​</a>
 </li>
@@ -285,44 +285,38 @@
 </li>
 </ul>
 </div>
-
 <div class="license">
-<h2 data-toc-skip>License</h2>
+<h2>License</h2>
 <ul class="list-unstyled">
 <li><a href="LICENSE.html">Full license</a></li>
 <li><small><a href="https://opensource.org/licenses/mit-license.php">MIT</a> + file <a href="LICENSE-text.html">LICENSE</a></small></li>
 </ul>
 </div>
-
-
 <div class="developers">
-<h2 data-toc-skip>Developers</h2>
+<h2>Developers</h2>
 <ul class="list-unstyled">
 <li>Hanjo Odendaal <br><small class="roles"> Author, maintainer </small> <a href="https://orcid.org/0000-0003-1172-0444" target="orcid.widget" aria-label="ORCID"><span class="fab fa-orcid orcid" aria-hidden="true"></span></a> </li>
 <li>Chris Garbers <br><small class="roles"> Author </small> <a href="https://orcid.org/0000-0003-1172-0444" target="orcid.widget" aria-label="ORCID"><span class="fab fa-orcid orcid" aria-hidden="true"></span></a> </li>
 </ul>
 </div>
 
-<div class="dev-status">
-<h2 data-toc-skip>Dev status</h2>
+  <div class="dev-status">
+<h2>Dev status</h2>
 <ul class="list-unstyled">
-<li><a href="https://www.tidyverse.org/lifecycle/#experimental" class="external-link"><img src="https://img.shields.io/badge/lifecycle-experimental-orange.svg" alt="Lifecycle: experimental"></a></li>
-<li><a href="https://github.com/71point4/sententia/commits/develop" class="external-link"><img src="https://img.shields.io/github/last-commit/71point4/sententia.svg"></a></li>
+<li><a href="https://www.tidyverse.org/lifecycle/#experimental"><img src="https://img.shields.io/badge/lifecycle-experimental-orange.svg" alt="Lifecycle: experimental"></a></li>
+<li><a href="https://github.com/71point4/sententia/commits/develop"><img src="https://img.shields.io/github/last-commit/71point4/sententia.svg"></a></li>
 </ul>
 </div>
-
-  </div>
+</div>
 </div>
 
 
       <footer><div class="copyright">
-  <p></p>
-<p>Developed by Hanjo Odendaal, Chris Garbers.</p>
+  <p>Developed by Hanjo Odendaal, Chris Garbers.</p>
 </div>
 
 <div class="pkgdown">
-  <p></p>
-<p>Site built with <a href="https://pkgdown.r-lib.org/" class="external-link">pkgdown</a> 1.6.1.9001.</p>
+  <p>Site built with <a href="https://pkgdown.r-lib.org/">pkgdown</a> 1.6.1.</p>
 </div>
 
       </footer>
@@ -330,8 +324,6 @@
 
   
 
-
-  
 
   </body>
 </html>
